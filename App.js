@@ -1,182 +1,92 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, TextInput, Button, Image, YellowBox } from "react-native";
-export default function App() {
+import { SafeAreaView, StyleSheet, TextInput, Text, ImageBackground, View, Button, Alert } from "react-native";
+
+
+// Can you do like this Kristoffer? (onChangeText 1, 2, 3 etc) (its working but is it okay?) I call it "hemmabygge"
+
+const UselessTextInput = () => {
+  const [text1, onChangeText1] = React.useState("Name:");
+  const [text2, onChangeText2] = React.useState("Email:");
+  const [text3, onChangeText3] = React.useState("Password:");
   
-  // All Functions
-  var textInputValue = "<answer goes here>"; // String variable
-  const handlePress = () => console.log(textInputValue); // const arrow function
-  const handleChangeText = () => console.log(textInputValue); // const arrow function
+ const image = {uri: "https://wallpaperaccess.com/full/1337873.jpg"};
+  
+
   return (
-    
-    <View style={main.topContainer}>
-      
+   
+    <View style={main.topTopContainer}>
+   <SafeAreaView style={main.topContainer}>
+    <ImageBackground source = {image} resizeMode = "cover" style = {main.image}> 
+    <Text style={main.topText}> Welcome! </Text> 
+    <Text style={main.topText1}> Join the community down below </Text>
+      <TextInput
+        style={main.nameBox}
+        onChangeText={onChangeText1}
+        value={text1}
+      />
 
-      <View style={main.smartHomeContainer}>
-        <Image
-            style={main.houseImage}
-            source={require("./assets/house.png")}
-          /> <Text style={main.toptext}>
-          SmartHome
-        </Text>
-      </View>
-      
+      <TextInput
+        style={main.nameBox}
+        onChangeText={onChangeText2}
+        value={text2} />
 
-      <Text style={main.roomText}> Rooms </Text>
+<TextInput
+        style={main.nameBox}
+        onChangeText={onChangeText3}
+        value={text3} />
 
+<Button
+        title="Submit"
+        onPress={() => Alert.alert('You have submitted to our site!')}
+        onPress={() => console.log ("Submit button was pressed")}
+      />
      
-
-
-           <View style={main.roomContainer}> 
-           <View style={main.roomIconsContainerNew}>
-        <Image style={{width: 120, height: 120}} source={require("./assets/living-room.png")}/>
-          <Text style={{textAlign: "center",fontWeight: "bold"}}>Livingroom</Text>
-          </View>
-
-          <View style={main.roomIconsContainerNew}>
-        <Image style={{width: 120, height: 120}} source={require("./assets/bed.png")}/>
-          <Text style={{textAlign: "center",fontWeight: "bold"}}>Bedroom</Text>
-          </View>
-
-          <View style={main.roomIconsContainerNew}>
-        <Image style={{width: 120, height: 120}} source={require("./assets/kitchen.png")}/>
-          <Text style={{textAlign: "center", fontWeight: "bold"}}>kitchen</Text>
-          </View>
-          </View>
-
-          <Text style={main.roomText}> Devices </Text>
-
-          
-          <View style={main.devices}>
-          <View style={main.deviceButton}>
-        <View style={[main.box, { backgroundColor: "green" }]} />
-        <Text style={main.deviceText}>Living Room Lamp</Text>
-        <View style={main.onOfButton}>
-          <Text style={main.onOfText}>ON</Text>
-          <Text style={main.onOfText}>OFF</Text>
-        </View>
-      </View>
-<View style={main.deviceButton}>
-        <View style={[main.box, { backgroundColor: "red" }]} />
-        <Text style={main.deviceText}>Heater</Text>
-        <View style={main.onOfButton}>
-          <Text style={main.onOfText}>ON</Text>
-          <Text style={main.onOfText}>OFF</Text>
-        </View>
-      </View>
-      <View style={main.deviceButton}>
-        <View style={[main.box, { backgroundColor: "red" }]} />
-        <Text style={main.deviceText}>TV</Text>
-        <View style={main.onOfButton}>
-          <Text style={main.onOfText}>ON</Text>
-          <Text style={main.onOfText}>OFF</Text>
-        </View>
-      </View>
-    </View>
-    <View style={main.footer}>
-      <Text style={{ fontSize: 20, fontWeight: "bold" }}>Total devices on: 1</Text>
+     </ImageBackground>
+    </SafeAreaView>
     </View>
 
 
-<StatusBar style="auto" />
-    </View>
   );
 };
 
 const main = StyleSheet.create({
-    toptext: {
-    fontWeight: "bold",
-    color: "green",
-    fontSize: 20,
-    marginLeft: 20,
-    marginTop: 20
+  nameBox: {
+      width: 230,
+      height: 40,
+      backgroundColor: '#FE872D',
+      marginBottom: 10,
+      padding: 10,
+      fontSize: 14,
+      fontWeight: 'bold',
+      borderRadius: 10,
+      alignItems: "center",
+      
   },
-  
 
-
-    houseImage: { 
-    width: 70, height: 70
-   },
-  
   topContainer: {
-    justifyContent: "space-between",
-    top: 20,
-    backgroundColor: "white",
-  
+    flex: 1,
+      
   },
+  topText: {
+    fontSize: 40,
+    fontWeight: "bold",
+    alignItems: "center"
+  },
+  topText1:{
+    fontSize: 14,
+    fontWeight: "bold",
+    marginBottom: 30
+  },
+  image: {
+    flex:1, 
+    justifyContent: "center",
+    alignItems: "center"
+  },
+  topTopContainer:{
+    flex: 1,
+    
+  }
+});
 
-
-  
-roomText:{
-fontSize: 30,
-fontWeight: "bold",
-marginTop: 25
-},
-
-    smartHomeContainer: {
-    flexDirection: "row",
-    marginRight: 0,
-    marginLeft: 10,
-    backgroundColor: "white",
-    marginTop:10,
-    },
-    
-    
-    roomIconsContainerNew:{
-    backgroundColor: "#5CAACB",
-    width: 150,
-    height: 150,
-    margin: 5,
-    alignItems: "center",
-    
-    
-    },
-    roomContainer:{
-      flexDirection: "row",
-      backgroundColor: "white"
-    },
-    
-    devicebody: {
-backgroundColor: "yellow",
-height: 100,
-width: 700,
-justifyContent: "center",
-
-    },
-    deviceButton: {
-      flex: 1,
-      flexDirection: "row",
-      backgroundColor: "#EEF296",
-      marginBottom: 20,
-      alignItems: "center",
-      paddingHorizontal: 20,
-      justifyContent: "space-between",
-    },
-    deviceText: {
-      marginLeft: 20,
-      fontSize: 20,
-      width: "70%",
-    },
-    box: {
-      width: 20,
-      height: 20,
-    },
-    onOfButton: {
-      width: 60,
-      height: "80%",
-      backgroundColor: "white",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    onOfText: {
-      fontSize: 15,
-      height: "50%",
-      textAlignVertical: "center",
-      color: "blue",
-    },
-    footer: {
-      paddingHorizontal: 10,
-      height: 60,
-    },
-  });
+export default UselessTextInput;
     
